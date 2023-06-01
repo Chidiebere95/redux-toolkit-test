@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { useEffect } from 'react';
+import { getLorem } from './features/get-lorem/loremSlice';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const dispatch = useDispatch();
+  const lorem=useSelector((state)=>{
+    return state.lorem
+  })
+  console.log(lorem);
+  useEffect(() => {
+    dispatch(getLorem());
+  }, []);
+  return <div className='App'>hello world</div>;
 }
 
 export default App;
