@@ -10,9 +10,7 @@ export const getLorem = createAsyncThunk(
     } catch (error) {
       console.log('axios error1');
       console.log(error);
-      rejectWithValue(error.responses.data);
-      console.log(); 
-      console.log('axios error2');
+      return rejectWithValue(error);
     }
   }
 );
@@ -23,22 +21,23 @@ const loremSlice = createSlice({
     data: [],
     isSuccess: false,
     loading: false,
-    message: '',
+    message: 'initial message',
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getLorem.pending, (state, { payload }) => {
-      state.data = payload;
+      state.data = [];
       state.loading = true;
+      state.message = 'pending message';
     });
     builder.addCase(getLorem.fulfilled, (state, { payload }) => {
       state.data = payload;
       state.loading = false;
       state.isSuccess = true;
-      state.message = 'fufilled message hahaha';
+      state.message = 'fufilled message';
     });
     builder.addCase(getLorem.rejected, (state, { payload }) => {
-      state.message = 'rejected message hahaha';
+      state.message = 'rejected message';
     });
   },
 });
