@@ -38,6 +38,8 @@ const loremSlice = createSlice({
     });
     builder.addCase(getLorem.rejected, (state, { payload }) => {
       state.message = 'rejected message';
+      state.isSuccess = false;
+      state.loading = false;
     });
   },
 });

@@ -6,7 +6,6 @@ import { getLorem } from './features/get-lorem/loremSlice';
 function App() {
   const dispatch = useDispatch();
   const lorem = useSelector((state) => {
-    console.log('yo');
     return state.lorem;
   });
   console.log(lorem);
@@ -14,7 +13,7 @@ function App() {
     console.log('useeffect');
      dispatch(getLorem());
   }, []);
-  return <div className='App'>{lorem.loading?<h5>loading...</h5>:lorem.data.map((item,index)=><h5 key={index}>{item}</h5>)}</div>;
+  return <div className='App'>{lorem.loading?<h5>Loading...</h5>:lorem.isSuccess?lorem.data.map((item,index)=><h5 key={index}>{item}</h5>):<h5>Unable to connect to the internet. check your network and try again...</h5>}</div>;
 }
 
 export default App;
