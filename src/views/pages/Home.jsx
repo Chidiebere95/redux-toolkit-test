@@ -4,6 +4,7 @@ import { getLorem } from '../../features/get-lorem/loremSlice';
 import { AppContext } from '../../context/Context';
 import { randomFuncTion } from '../../random-function/randomFunction';
 import RandomComponent from '../../random-function/RandomComponent';
+
 function Home() {
   const { variable1 } = randomFuncTion();
   const dispatch = useDispatch();
