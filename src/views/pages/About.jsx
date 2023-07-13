@@ -4,58 +4,49 @@ import { getLorem } from '../../features/get-lorem/loremSlice';
 import { AppContext } from '../../context/Context';
 import { randomFuncTion } from '../../random-function/randomFunction';
 import RandomComponent from '../../random-function/RandomComponent';
+import { getLoremAboutPage } from '../../features/get-lorem-about-page/loremAboutPageSlice';
+import { icons } from '../../assets/icons';
 function About() {
   const { variable1 } = randomFuncTion();
   const dispatch = useDispatch();
-  const lorem = useSelector((state) => {
-    return state.lorem;
+  const { loremAboutPage } = useSelector((state) => {
+    return state.loremAboutPage;
   });
-  // console.log(lorem);
+  console.log(loremAboutPage);
   const { theme } = useContext(AppContext);
+  console.log(theme);
   useEffect(() => {
-    dispatch(getLorem());
+    dispatch(getLoremAboutPage());
   }, []);
   return (
-    <div className='App'>
-      {/* {lorem.loading ? (
-        <h5>Loading...</h5>
-      ) : lorem.isSuccess ? (
-        <div>
-          {lorem.data.map((item, index) => (
-            <h5 key={index}>{item}</h5>
-          ))}
-          <img src='https://roqqu.com/static/media/tokens/btc.png' alt='coin logo' />
-        </div>
-      ) : (
-        <h5>
-          Unable to connect to the internet. check your network and try again...
-        </h5>
-      )} */}
-      <div className='about'>
-        <h2>About</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor
-          assumenda, itaque nesciunt alias voluptatum nobis blanditiis eos
-          officiis aperiam earum eum vel quas odio optio, distinctio ab sunt
-          unde incidunt ipsum omnis amet magnam accusantium aut! Excepturi,
-          cupiditate iusto!
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Necessitatibus veniam ducimus eligendi nihil, cumque ab eveniet modi
-          architecto quidem, non odit saepe facere voluptas esse mollitia illo
-          fuga exercitationem id dicta iusto eaque numquam quaerat ad! Fugit
-          velit beatae laudantium.
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Necessitatibus veniam ducimus eligendi nihil, cumque ab eveniet modi
-          architecto quidem, non odit saepe facere voluptas esse mollitia illo
-          fuga exercitationem id dicta iusto eaque numquam quaerat ad! Fugit
-          velit beatae laudantium.
-        </p>
-      </div>
-    </div>
+    <p>hello</p>
+    // <div className='App'>
+    //   {loremAboutPage.status === 'loading' ? (
+    //     <p>Loading...</p>
+    //   ) : loremAboutPage.status === 'success' ? (
+    //     <div>
+    //       {loremAboutPage.data.map((item, index) => (
+    //         <p key={index}>{item}</p>
+    //       ))}
+    //       <div
+    //         onClick={() => {
+    //           navigator.clipboard.writeText(loremAboutPage.data.join(''));
+    //         }}
+    //         className='copy'
+    //       >
+    //         <button>Copy all</button>
+    //         <figure className={`${theme}_theme_color`}>{icons.copy}</figure>
+    //       </div>
+    //     </div>
+    //   ) : loremAboutPage.status === 'error' ||
+    //     loremAboutPage.status === 'base' ? (
+    //     <p>
+    //       Unable to connect to the internet. check your network and try again...
+    //     </p>
+    //   ) : (
+    //     <></>
+    //   )}
+    // </div>
   );
 }
 

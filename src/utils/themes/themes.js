@@ -4,6 +4,9 @@ export const GlobalStyles = createGlobalStyle`
    color: ${({ theme }) => theme.card_body_color} !important;
    background-color: ${({ theme }) => theme.card_body_bg_color} !important;
 }
+.text-color{
+   color: ${({ theme }) => theme.card_body_color} !important;
+}
 `;
 export const lightTheme = {
   card_body_color: '#1C2127',

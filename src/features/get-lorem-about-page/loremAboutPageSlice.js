@@ -1,21 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getLorem = createAsyncThunk(
-  'lorem/getData',
+export const getLoremAboutPage = createAsyncThunk(
+  'lorem-about-page/getData',
   async (arg, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('https://baconipsum.com/api/?type=tst');
       return data;
     } catch (error) {
-      // return rejectWithValue(error);
       return rejectWithValue();
     }
   }
 );
 
-const loremSlice = createSlice({
-  name: 'getLorem',
+const loremABoutPageSlice = createSlice({
+  name: 'getLorem-about-page',
   initialState: {
     status: 'base',
     data: [],
@@ -23,22 +22,21 @@ const loremSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getLorem.pending, (state, { payload }) => {
+    builder.addCase(getLoremAboutPage.pending, (state, { payload }) => {
       state.status = 'loading';
       state.data = [];
       state.error = false;
     });
-    builder.addCase(getLorem.fulfilled, (state, { payload }) => {
+    builder.addCase(getLoremAboutPage.fulfilled, (state, { payload }) => {
       state.status = 'success';
       state.data = payload;
       state.error = false;
     });
-    builder.addCase(getLorem.rejected, (state, { payload }) => {
+    builder.addCase(getLoremAboutPage.rejected, (state, { payload }) => {
       state.status = 'error';
       state.data = [];
       state.error = true;
     });
   },
 });
-// export const { increase } = loremSlice.actions;
-export default loremSlice.reducer;
+export default loremABoutPageSlice.reducer;
