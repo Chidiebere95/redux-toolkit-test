@@ -12,6 +12,7 @@ function Home() {
   const { lorem } = useSelector((state) => {
     return state;
   });
+  const array = [];
   const { theme } = useContext(AppContext);
   useEffect(() => {
     dispatch(getLorem());
